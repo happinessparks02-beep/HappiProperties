@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappiProperties | Find & Sell Properties in Sinnar, Nashik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        'cream-dark': '#F4EFEA',
+                        gold: '#D4AF37',
+                        'gold-light': '#F3E5AB',
+                        'gold-dark': '#AA7C11',
+                        charcoal: '#1A1A1A',
+                        'charcoal-muted': '#4A4A4A'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    },
+                    animation: {
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 10s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'rise': 'rise .5s ease both'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(2deg)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' }
+                        },
+                        rise: {
+                            '0%': { opacity: '0', transform: 'translateY(14px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FDFBF7; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        .glass-panel { background: rgba(255,253,249,.92); backdrop-filter: blur(16px); border: 1px solid rgba(212,175,55,.25); }
+        .gold-gradient-text { background: linear-gradient(135deg,#B8860B 0%,#D4AF37 50%,#FFD700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gold-button-gradient { background: linear-gradient(135deg,#D4AF37 0%,#AA7C11 100%); transition: all .3s ease; }
+        .gold-button-gradient:hover { background: linear-gradient(135deg,#E5C158 0%,#C28E15 100%); transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(212,175,55,.4); }
+
+        /* Main tabs */
+        .main-tab { transition: all .35s ease; color: #4A4A4A; }
+        .main-tab.active { background: linear-gradient(135deg,#D4AF37 0%,#AA7C11 100%); color: #fff; box-shadow: 0 10px 25px -8px rgba(170,124,17,.55); }
+        .main-tab:not(.active):hover { background: rgba(212,175,55,.12); }
+
+        /* Category cards */
+        .cat-card { transition: all .3s ease; cursor: pointer; border: 1.5px solid rgba(212,175,55,.25); background: #fff; }
+        .cat-card:hover { transform: translateY(-4px); border-color: #D4AF37; box-shadow: 0 18px 35px -15px rgba(170,124,17,.35); }
+        .cat-card.selected { border-color: #AA7C11; background: linear-gradient(180deg,#FFFBEA 0%,#fff 100%); box-shadow: 0 18px 35px -15px rgba(170,124,17,.45); }
+        .cat-card .check { opacity: 0; transform: scale(.5); transition: all .25s ease; }
+        .cat-card.selected .check { opacity: 1; transform: scale(1); }
+
+        /* Sub chips */
+        .sub-chip { transition: all .25s ease; cursor: pointer; border: 1.5px solid rgba(212,175,55,.35); background: #fff; }
+        .sub-chip:hover { border-color: #D4AF37; background: #FFFBEA; }
+        .sub-chip.selected { background: linear-gradient(135deg,#D4AF37 0%,#AA7C11 100%); color: #fff; border-color: #AA7C11; box-shadow: 0 8px 18px -8px rgba(170,124,17,.6); }
+
+        .step-dot { width: 34px; height: 34px; }
+
+        /* Filters & listings */
+        .fchip { border: 1.5px solid rgba(212,175,55,.35); background: #fff; padding: .42rem .9rem; border-radius: 999px; font-size: .78rem; font-weight: 700; cursor: pointer; transition: all .2s ease; }
+        .fchip:hover { border-color: #D4AF37; background: #FFFBEA; }
+        .fchip.on { background: linear-gradient(135deg,#D4AF37 0%,#AA7C11 100%); color: #fff; border-color: #AA7C11; box-shadow: 0 6px 14px -6px rgba(170,124,17,.6); }
+        .lcard { transition: all .3s ease; }
+        .lcard:hover { transform: translateY(-5px); box-shadow: 0 25px 45px -20px rgba(170,124,17,.45); }
+        .mtab { padding: .55rem 1.1rem; border-radius: 999px; font-size: .8rem; font-weight: 700; border: 1.5px solid rgba(212,175,55,.35); background: #fff; white-space: nowrap; cursor: pointer; transition: all .2s ease; }
+        .mtab:hover { border-color: #D4AF37; }
+        .mtab.on { background: linear-gradient(135deg,#D4AF37 0%,#AA7C11 100%); color: #fff; border-color: #AA7C11; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { scrollbar-width: none; }
+        .field { width: 100%; padding: .8rem 1rem; border-radius: .85rem; border: 1px solid rgba(212,175,55,.35); background: #fff; font-size: .9rem; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+        .field:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 0 3px rgba(212,175,55,.18); }
+        .lbl { display: block; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #4A4A4A; margin-bottom: .45rem; }
+    </style>
+</head>
+<body class="bg-cream text-charcoal font-sans antialiased selection:bg-gold selection:text-white overflow-x-hidden">
+
+    <!-- Ambient background -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-br from-amber-100/60 to-gold/15 blur-3xl animate-float-slow"></div>
+        <div class="absolute top-1/3 -right-32 w-80 h-80 rounded-full bg-gradient-to-bl from-purple-100/40 to-amber-200/50 blur-3xl animate-float-delayed"></div>
+        <div class="absolute -bottom-32 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-stone-200/50 to-amber-100/40 blur-3xl animate-pulse-glow"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#1A1A1A 1px, transparent 1px); background-size: 32px 32px;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-gold/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-orange-400 shadow-md group-hover:scale-105 transition-transform duration-300 bg-white flex items-center justify-center">
+                    <img src="logo.png" alt="HappiProperties Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/200x200/FF6B35/FFFFFF?text=HP';">
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-charcoal">Happi<span class="gold-gradient-text">Properties</span></span>
+                    <span class="block text-[10px] tracking-widest uppercase text-charcoal-muted font-semibold">New Age Real Estate Platform</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#explore" onclick="setMode('find')" class="text-charcoal hover:text-gold-dark transition-colors font-semibold">Find Properties</a>
+                <a href="#explore" onclick="setMode('sell')" class="text-charcoal hover:text-gold-dark transition-colors font-semibold">Sell Properties</a>
+                <a href="#watch" class="text-charcoal hover:text-gold-dark transition-colors">Watch Reels</a>
+                <a href="builders/" class="text-charcoal-muted hover:text-gold-dark transition-colors"><i class="fa-solid fa-building mr-1.5 text-xs"></i>For Builders</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-full gold-button-gradient text-white font-semibold shadow-sm">
+                    <i class="fa-solid fa-phone mr-2"></i> 7770006357
+                </a>
+            </nav>
+
+            <button id="menuBtn" class="md:hidden text-charcoal text-xl p-2 focus:outline-none" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-gold/20 px-6 py-5 space-y-4 shadow-xl">
+            <a href="#explore" onclick="setMode('find')" class="block text-charcoal font-semibold">Find Properties</a>
+            <a href="#explore" onclick="setMode('sell')" class="block text-charcoal font-semibold">Sell Properties</a>
+            <a href="#watch" class="block text-charcoal font-medium">Watch Reels</a>
+            <a href="builders/" class="block text-charcoal-muted font-medium"><i class="fa-solid fa-building mr-1.5 text-xs"></i>For Builders</a>
+            <a href="#contact" class="block text-center py-3 rounded-full gold-button-gradient text-white font-semibold shadow">
+                <i class="fa-solid fa-phone mr-2"></i> Call: 7770006357
+            </a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- HERO -->
+        <section class="relative pt-16 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-gold/30 text-gold-dark text-xs sm:text-sm font-semibold tracking-wider uppercase shadow-sm">
+                <i class="fa-solid fa-crown text-gold"></i> New Age Real Estate Platform
+            </div>
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold text-charcoal tracking-tight leading-[1.12] mt-6">
+                Find it. Sell it. <span class="gold-gradient-text">Happily.</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-charcoal-muted max-w-2xl mx-auto font-normal leading-relaxed mt-5">
+                Stays, rentals, homes and land across Sinnar & Nashik — with trusted guidance from the first call to the final deal.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-8 text-sm font-semibold text-charcoal-muted">
+                <span><i class="fa-solid fa-shield-halved text-gold mr-2"></i>Verified Consulting</span>
+                <span><i class="fa-solid fa-film text-gold mr-2"></i>HD Reels & Media</span>
+                <span><i class="fa-solid fa-location-dot text-gold mr-2"></i>Sinnar & Nashik, MH</span>
+            </div>
+        </section>
+
+        <!-- EXPLORER -->
+        <section id="explore" class="px-4 sm:px-6 lg:px-8 pb-24 max-w-6xl mx-auto scroll-mt-28">
+
+            <!-- Main tabs -->
+            <div class="flex justify-center">
+                <div class="glass-panel rounded-full p-1.5 shadow-xl inline-flex w-full sm:w-auto" role="tablist">
+                    <button id="tab-find" role="tab" onclick="setMode('find')" class="main-tab active flex-1 sm:flex-none px-5 sm:px-10 py-3.5 rounded-full font-bold text-sm sm:text-base flex items-center justify-center gap-2.5">
+                        <i class="fa-solid fa-magnifying-glass"></i> Find Properties
+                    </button>
+                    <button id="tab-sell" role="tab" onclick="setMode('sell')" class="main-tab flex-1 sm:flex-none px-5 sm:px-10 py-3.5 rounded-full font-bold text-sm sm:text-base flex items-center justify-center gap-2.5">
+                        <i class="fa-solid fa-tag"></i> Sell Properties
+                    </button>
+                </div>
+            </div>
+
+            <!-- Panel -->
+            <div class="glass-panel rounded-[2rem] shadow-2xl mt-8 p-5 sm:p-10 relative overflow-hidden">
+                <div class="absolute -top-16 -right-16 w-56 h-56 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Panel heading -->
+                <div class="text-center max-w-2xl mx-auto relative">
+                    <span id="roleBadge" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-widest border border-gold/30"></span>
+                    <h2 id="panelTitle" class="font-serif text-3xl sm:text-4xl font-bold text-charcoal mt-4"></h2>
+                    <p id="panelSub" class="text-charcoal-muted mt-3"></p>
+                </div>
+
+                <!-- Stepper -->
+                <div class="flex items-center justify-center gap-2 sm:gap-3 mt-8 text-xs sm:text-sm font-bold" id="stepper"></div>
+
+                <!-- Step 1 -->
+                <div class="mt-8">
+                    <p class="lbl text-center" id="step1Label"></p>
+                    <div id="catGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-3"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="subWrap" class="hidden mt-10 animate-rise">
+                    <p class="lbl text-center" id="step2Label"></p>
+                    <div id="subGrid" class="flex flex-wrap justify-center gap-3 mt-3"></div>
+                </div>
+
+                <!-- Step 3 (Find mode): Filters + Listings -->
+                <div id="resultsWrap" class="hidden mt-10 animate-rise">
+                    <div class="flex items-end justify-between flex-wrap gap-3">
+                        <div>
+                            <p class="lbl !mb-1">Step 3 · Refine your search</p>
+                            <h3 id="resTitle" class="font-serif text-2xl sm:text-3xl font-bold text-charcoal"></h3>
+                        </div>
+                        <button type="button" onclick="resetFilters()" class="text-xs font-bold text-gold-dark hover:underline"><i class="fa-solid fa-rotate-left mr-1"></i>Reset filters</button>
+                    </div>
+
+                    <div id="filterPanel" class="mt-4 rounded-3xl bg-white/80 border border-gold/25 p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 shadow-sm"></div>
+
+                    <div class="flex items-center justify-between mt-10 flex-wrap gap-2">
+                        <h4 class="font-serif text-xl sm:text-2xl font-bold">Available Properties <span id="resCount" class="text-sm font-sans font-bold text-gold-dark ml-2"></span></h4>
+                        <p class="text-xs text-charcoal-muted"><i class="fa-solid fa-hand-pointer text-gold mr-1"></i>Open a property to watch shoots, walkthroughs & virtual tours</p>
+                    </div>
+                    <div id="listGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5"></div>
+
+                    <div id="noMatch" class="hidden mt-5 text-center rounded-3xl bg-white/80 border border-dashed border-gold/40 p-8">
+                        <i class="fa-solid fa-magnifying-glass-location text-3xl text-gold"></i>
+                        <p class="font-serif text-xl font-bold mt-3">No exact match right now</p>
+                        <p class="text-sm text-charcoal-muted mt-1 max-w-md mx-auto">Try changing a few filters, or share your requirement below. New properties reach us daily.</p>
+                        <button type="button" onclick="document.getElementById('formWrap').scrollIntoView({behavior:'smooth'})" class="mt-4 px-6 py-3 rounded-xl gold-button-gradient text-white font-bold text-sm">Share My Requirement</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 (Sell mode) / fallback requirement form -->
+                <div id="formWrap" class="hidden mt-10 animate-rise">
+                    <div class="max-w-3xl mx-auto rounded-3xl bg-white/80 border border-gold/25 p-5 sm:p-8 shadow-lg">
+                        <div class="flex items-start justify-between gap-4 flex-wrap">
+                            <div>
+                                <p id="formKicker" class="lbl !mb-1">Your selection</p>
+                                <p id="summaryLine" class="font-serif text-xl font-bold text-charcoal"></p>
+                            </div>
+                            <button type="button" onclick="resetSelection()" class="text-xs font-bold text-gold-dark hover:underline"><i class="fa-solid fa-rotate-left mr-1"></i>Change</button>
+                        </div>
+
+                        <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="lbl" for="fName">Full Name</label>
+                                <input id="fName" type="text" required placeholder="Your name" class="field">
+                            </div>
+                            <div>
+                                <label class="lbl" for="fPhone">Phone / WhatsApp</label>
+                                <input id="fPhone" type="tel" required pattern="[0-9+ ]{10,14}" placeholder="10-digit mobile number" class="field">
+                            </div>
+                            <div>
+                                <label class="lbl" for="fLocation" id="locLabel">Preferred Location</label>
+                                <input id="fLocation" type="text" required placeholder="e.g. Sinnar, Nashik Road, Shirdi Highway" class="field">
+                            </div>
+                            <div id="extraField1"></div>
+                            <div id="extraField2" class="sm:col-span-2 hidden"></div>
+                            <div class="sm:col-span-2">
+                                <label class="lbl" for="fNote">Additional Details (optional)</label>
+                                <textarea id="fNote" rows="3" placeholder="Anything else we should know?" class="field resize-none"></textarea>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <button type="submit" class="w-full py-4 rounded-xl gold-button-gradient text-white font-bold shadow-md flex items-center justify-center gap-3">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    <span id="submitLabel">Send Request</span>
+                                </button>
+                                <p class="text-center text-xs text-charcoal-muted mt-3">Opens WhatsApp with your details pre-filled. Our consulting desk replies promptly.</p>
+                            </div>
+                        </form>
+
+                        <div id="leadSuccess" class="hidden mt-5 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium text-center">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i> Request ready! If WhatsApp didn't open, call us directly at <a href="tel:7770006357" class="font-bold underline">7770006357</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WATCH -->
+        <section id="watch" class="py-24 bg-cream-dark/60 border-y border-gold/15">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-widest border border-gold/30">
+                        <i class="fa-solid fa-play text-gold"></i> Property Showcase & Reels
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-charcoal">Watch Properties Before You Visit</h2>
+                    <p class="text-charcoal-muted text-base sm:text-lg">High-definition walkthroughs of homes, stays, plots, land and rentals from our official page.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-panel rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gold/30 transition-all group flex flex-col">
+                        <div class="relative h-64 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Homes tour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" onerror="this.src='https://placehold.co/600x400/1A1A1A/ffffff?text=HappiProperties'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                                <button onclick="openVideoModal('Flats, Row Houses & Bungalows Walkthrough','https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80')" class="w-16 h-16 rounded-full gold-button-gradient text-white flex items-center justify-center text-xl shadow-2xl" aria-label="Play"><i class="fa-solid fa-play ml-1"></i></button>
+                            </div>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-gold text-white text-xs font-bold uppercase tracking-wider shadow">Homes</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-serif text-xl font-bold">Flats, Row Houses & Bungalows</h3>
+                            <p class="text-sm text-charcoal-muted">Spacious layouts, premium finishes and modern elegance.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gold/30 transition-all group flex flex-col">
+                        <div class="relative h-64 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="Land tour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" onerror="this.src='https://placehold.co/600x400/1A1A1A/ffffff?text=HappiProperties'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                                <button onclick="openVideoModal('NA Plots & Agricultural Land Overview','https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80')" class="w-16 h-16 rounded-full gold-button-gradient text-white flex items-center justify-center text-xl shadow-2xl" aria-label="Play"><i class="fa-solid fa-play ml-1"></i></button>
+                            </div>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-gold text-white text-xs font-bold uppercase tracking-wider shadow">Land & Plots</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-serif text-xl font-bold">NA, Agricultural & Residential Land</h3>
+                            <p class="text-sm text-charcoal-muted">High-appreciation zones, sanctioned plots and fertile parcels.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gold/30 transition-all group flex flex-col">
+                        <div class="relative h-64 overflow-hidden bg-stone-900">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Industrial tour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" onerror="this.src='https://placehold.co/600x400/1A1A1A/ffffff?text=HappiProperties'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                                <button onclick="openVideoModal('Industrial, Rent & Lease Properties Reel','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80')" class="w-16 h-16 rounded-full gold-button-gradient text-white flex items-center justify-center text-xl shadow-2xl" aria-label="Play"><i class="fa-solid fa-play ml-1"></i></button>
+                            </div>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-gold text-white text-xs font-bold uppercase tracking-wider shadow">Industrial & Rental</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-serif text-xl font-bold">Industrial, Rent & Lease</h3>
+                            <p class="text-sm text-charcoal-muted">Industrial spaces, commercial leasing and rental properties.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-24 bg-cream-dark/60 border-t border-gold/15">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <div>
+                            <span class="text-xs uppercase font-bold tracking-widest text-gold-dark">Get in Touch</span>
+                            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-charcoal mt-2">Let’s Build Your Success Story Today</h2>
+                            <p class="text-charcoal-muted text-base sm:text-lg mt-4">Looking to buy, rent, stay or sell a property? Contact HappiProperties right now.</p>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="glass-panel p-6 rounded-2xl flex items-center gap-5 hover:border-gold transition-all">
+                                <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-xl shadow"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-wider text-charcoal-muted">Direct Phone / WhatsApp</p>
+                                    <a href="tel:7770006357" class="font-serif text-2xl font-bold hover:text-gold-dark transition-colors">7770006357</a>
+                                </div>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl flex items-center gap-5 hover:border-gold transition-all">
+                                <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-xl shadow"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-wider text-charcoal-muted">Headquarters & Hub</p>
+                                    <p class="font-serif text-xl font-bold">Sinnar, Nashik, Maharashtra, India</p>
+                                </div>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl flex items-center gap-5 hover:border-gold transition-all">
+                                <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-xl shadow"><i class="fa-brands fa-instagram"></i></div>
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-wider text-charcoal-muted">Official Social Page & Reels</p>
+                                    <p class="font-serif text-xl font-bold">@HappiProperties</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-8 sm:p-10 rounded-3xl shadow-xl relative">
+                        <h3 class="font-serif text-2xl font-bold mb-2">Send an Inquiry</h3>
+                        <p class="text-sm text-charcoal-muted mb-6">Fill the form and our team will get back to you promptly.</p>
+                        <form id="inquiryForm" onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="lbl">Your Name</label>
+                                <input type="text" id="inquiryName" placeholder="Enter your full name" required class="field">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="lbl">Phone Number</label>
+                                    <input type="tel" id="inquiryPhone" placeholder="Mobile number" required class="field">
+                                </div>
+                                <div>
+                                    <label class="lbl">I need help with</label>
+                                    <select id="inquiryService" class="field">
+                                        <option value="General Inquiry">General Inquiry</option>
+                                        <option value="Buy a Property">Buy a Property</option>
+                                        <option value="Rent / Lease a Property">Rent / Lease a Property</option>
+                                        <option value="Short Stay Booking">Short Stay Booking</option>
+                                        <option value="Sell / List My Property">Sell / List My Property</option>
+                                        <option value="Property Consulting">Property Consulting</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="lbl">Message / Details</label>
+                                <textarea id="inquiryMessage" rows="4" placeholder="Tell us about your requirement..." required class="field resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 rounded-xl gold-button-gradient text-white font-bold shadow-md flex items-center justify-center gap-2">
+                                <span>Submit Message</span><i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                        <div id="inquirySuccess" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium text-center">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i> Thank you! We will call you shortly.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Property detail modal -->
+    <div id="propModal" class="fixed inset-0 z-[60] hidden bg-black/80 backdrop-blur-md overflow-y-auto p-3 sm:p-6">
+        <div class="glass-panel max-w-4xl mx-auto rounded-3xl p-4 sm:p-6 shadow-2xl my-4">
+            <div class="flex items-start justify-between gap-4 mb-4">
+                <div>
+                    <span id="propBadge" class="inline-block px-3 py-1 rounded-full bg-gold text-white text-[11px] font-bold uppercase tracking-wider"></span>
+                    <h3 id="propTitle" class="font-serif text-xl sm:text-2xl font-bold mt-2"></h3>
+                </div>
+                <button onclick="closeProp()" class="w-10 h-10 shrink-0 rounded-full bg-stone-100 hover:bg-gold hover:text-white flex items-center justify-center transition-colors" aria-label="Close"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="propStage" class="relative rounded-2xl overflow-hidden bg-black aspect-video"></div>
+            <div id="propTabs" class="flex gap-2 overflow-x-auto no-scrollbar mt-4"></div>
+            <div id="propInfo" class="mt-5"></div>
+        </div>
+    </div>
+
+    <!-- Site visit modal -->
+    <div id="visitModal" class="fixed inset-0 z-[70] hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl my-auto">
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <span class="lbl !mb-1">Book a Site Visit</span>
+                    <h3 id="visitFor" class="font-serif text-xl font-bold"></h3>
+                    <p id="visitLoc" class="text-xs text-charcoal-muted mt-1"></p>
+                </div>
+                <button onclick="closeVisit()" class="w-10 h-10 shrink-0 rounded-full bg-stone-100 hover:bg-gold hover:text-white flex items-center justify-center transition-colors" aria-label="Close"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="visitForm" onsubmit="submitVisit(event)" class="mt-5 grid grid-cols-2 gap-4">
+                <div class="col-span-2"><label class="lbl" for="vName">Full Name</label><input id="vName" type="text" required placeholder="Your name" class="field"></div>
+                <div class="col-span-2"><label class="lbl" for="vPhone">Phone / WhatsApp</label><input id="vPhone" type="tel" required pattern="[0-9+ ]{10,14}" placeholder="10-digit mobile number" class="field"></div>
+                <div><label class="lbl" for="vDate">Preferred Date</label><input id="vDate" type="date" required class="field"></div>
+                <div><label class="lbl" for="vTime">Preferred Time</label>
+                    <select id="vTime" class="field">
+                        <option>Morning (10 AM – 12 PM)</option>
+                        <option>Afternoon (12 – 4 PM)</option>
+                        <option>Evening (4 – 7 PM)</option>
+                    </select>
+                </div>
+                <div class="col-span-2"><label class="lbl" for="vPeople">Number of Visitors (optional)</label><input id="vPeople" type="text" placeholder="e.g. 3" class="field"></div>
+                <div class="col-span-2">
+                    <button type="submit" class="w-full py-4 rounded-xl gold-button-gradient text-white font-bold shadow-md flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-lg"></i><span>Confirm Site Visit Request</span>
+                    </button>
+                    <p class="text-center text-xs text-charcoal-muted mt-3">We will confirm your slot on WhatsApp / call.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video modal -->
+    <div id="videoModal" class="fixed inset-0 z-[60] hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 relative shadow-2xl space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 id="modalTitle" class="font-serif text-xl font-bold">Property Video Walkthrough</h3>
+                <button onclick="closeVideoModal()" class="w-10 h-10 rounded-full bg-stone-100 hover:bg-gold hover:text-white flex items-center justify-center transition-colors" aria-label="Close"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden bg-black aspect-video flex items-center justify-center">
+                <img id="modalImg" src="" alt="Reel Preview" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40">
+                    <div class="text-center text-white space-y-2 p-4">
+                        <div class="w-16 h-16 rounded-full gold-button-gradient mx-auto flex items-center justify-center text-2xl shadow-lg animate-pulse"><i class="fa-solid fa-play ml-1"></i></div>
+                        <p class="font-serif text-lg font-bold">Playing HappiProperties Reel</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 pt-2">
+                <a href="#explore" onclick="closeVideoModal()" class="px-6 py-2.5 rounded-xl gold-button-gradient text-white font-bold text-sm shadow">Find Similar Properties</a>
+                <button onclick="closeVideoModal()" class="px-6 py-2.5 rounded-xl bg-white border border-gold/30 font-bold text-sm hover:bg-stone-50">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-charcoal text-white py-12 border-t border-gold/20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-orange-400 bg-white flex items-center justify-center">
+                    <img src="logo.png" alt="HappiProperties Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/200x200/FF6B35/FFFFFF?text=HP';">
+                </div>
+                <div>
+                    <span class="font-serif text-xl font-bold tracking-tight">Happi<span class="gold-gradient-text">Properties</span></span>
+                    <span class="block text-[10px] tracking-widest uppercase text-gray-400">New Age Real Estate Platform</span>
+                </div>
+            </div>
+            <div class="text-center md:text-right text-sm text-gray-400">
+                <p><a href="builders/" class="text-gray-300 hover:text-gold font-semibold">For Builders &amp; Developers <i class="fa-solid fa-arrow-right text-xs ml-1"></i></a></p>
+                <p class="mt-1">&copy; 2026 HappiProperties. All rights reserved.</p>
+                <p class="mt-1">Direct Contact: <a href="tel:7770006357" class="text-gold font-bold hover:underline">7770006357</a> | Sinnar, Nashik, Maharashtra</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const WA_NUMBER = '917770006357';
+
+        /* ---------- Content for both tabs ---------- */
+        const DATA = {
+            find: {
+                role: 'Buyer',
+                roleIcon: 'fa-user-check',
+                title: 'What are you looking for?',
+                sub: 'Choose a category, pick the type, and tell us your requirement. We will match you with the right property.',
+                step1: 'Step 1 · What do you need?',
+                step2: 'Step 2 · Which type?',
+                submit: 'Send My Requirement',
+                locLabel: 'Preferred Location',
+                cats: [
+                    { id: 'stay', icon: 'fa-umbrella-beach', name: 'Short Stay', tag: 'Rooms · Flats · Villas', desc: 'Comfortable stays for a night, a weekend or a month.', subs: ['Rooms', 'Flats', 'Villas'] },
+                    { id: 'rent', icon: 'fa-key', name: 'Rent / Lease', tag: 'Monthly & long-term', desc: 'Homes, shops and industrial spaces on rent or lease.', subs: ['Flat', 'Row House', 'Bungalow', 'Shop / Commercial', 'Industrial Space'] },
+                    { id: 'buy', icon: 'fa-house-chimney', name: 'Buy Homes', tag: 'Row House · Bungalow · Flats', desc: 'Ready and under-construction homes for your family.', subs: ['Row House', 'Bungalow', 'Flat'] },
+                    { id: 'land', icon: 'fa-map-location-dot', name: 'Land & Plots', tag: 'NA · Agricultural · Industrial · Residential', desc: 'Investment-grade land with clear titles.', subs: ['NA Plot', 'Agricultural Land', 'Industrial Land', 'Residential Plot'] }
+                ]
+            },
+            sell: {
+                role: 'Seller',
+                roleIcon: 'fa-user-tie',
+                title: 'What would you like to list?',
+                sub: 'Tell us about your property. We market it with cinematic reels and connect you to genuine buyers.',
+                step1: 'Step 1 · What are you listing?',
+                step2: 'Step 2 · Which type?',
+                submit: 'Send My Listing Request',
+                locLabel: 'Property Location',
+                cats: [
+                    { id: 'stay', icon: 'fa-umbrella-beach', name: 'Host a Short Stay', tag: 'Rooms · Flats · Villas', desc: 'List your room, flat or villa for short-term guests.', subs: ['Rooms', 'Flats', 'Villas'] },
+                    { id: 'rent', icon: 'fa-key', name: 'Give on Rent / Lease', tag: 'Monthly & long-term', desc: 'Find reliable tenants for your property.', subs: ['Flat', 'Row House', 'Bungalow', 'Shop / Commercial', 'Industrial Space'] },
+                    { id: 'buy', icon: 'fa-house-chimney', name: 'Sell a Home', tag: 'Row House · Bungalow · Flats', desc: 'Reach serious buyers for your home.', subs: ['Row House', 'Bungalow', 'Flat'] },
+                    { id: 'land', icon: 'fa-map-location-dot', name: 'Sell Land & Plots', tag: 'NA · Agricultural · Industrial · Residential', desc: 'Get the right value for your land.', subs: ['NA Plot', 'Agricultural Land', 'Industrial Land', 'Residential Plot'] }
+                ]
+            }
+        };
+
+        const state = { mode: 'find', cat: null, sub: null, filters: {} };
+
+        const $ = id => document.getElementById(id);
+
+        /* ---------- Rendering ---------- */
+        function renderStepper() {
+            const steps = [
+                { n: 1, t: 'Category', done: !!state.cat },
+                { n: 2, t: 'Type', done: !!state.sub },
+                { n: 3, t: state.mode === 'find' ? 'Browse' : 'Details', done: false }
+            ];
+            const activeIdx = !state.cat ? 1 : (!state.sub ? 2 : 3);
+            $('stepper').innerHTML = steps.map((s, i) => {
+                const isActive = s.n === activeIdx;
+                const cls = s.done ? 'gold-button-gradient text-white' : (isActive ? 'bg-white border-2 border-gold text-gold-dark' : 'bg-white border border-gold/30 text-charcoal-muted');
+                const inner = s.done ? '<i class="fa-solid fa-check text-xs"></i>' : s.n;
+                const bar = i < steps.length - 1 ? '<span class="w-6 sm:w-14 h-px bg-gold/40"></span>' : '';
+                return `<div class="flex items-center gap-2"><span class="step-dot rounded-full flex items-center justify-center ${cls}">${inner}</span><span class="${isActive || s.done ? 'text-charcoal' : 'text-charcoal-muted'}">${s.t}</span></div>${bar}`;
+            }).join('');
+        }
+
+        function renderPanel() {
+            const d = DATA[state.mode];
+            $('roleBadge').innerHTML = `<i class="fa-solid ${d.roleIcon}"></i> I am a ${d.role}`;
+            $('panelTitle').textContent = d.title;
+            $('panelSub').textContent = d.sub;
+            $('step1Label').textContent = d.step1;
+            $('step2Label').textContent = d.step2;
+            $('submitLabel').textContent = d.submit;
+            $('locLabel').textContent = d.locLabel;
+
+            $('catGrid').innerHTML = d.cats.map(c => `
+                <button type="button" onclick="selectCat('${c.id}')" class="cat-card ${state.cat === c.id ? 'selected' : ''} relative text-left rounded-2xl p-5 flex flex-col gap-3">
+                    <span class="check absolute top-3 right-3 w-6 h-6 rounded-full gold-button-gradient text-white flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></span>
+                    <span class="w-12 h-12 rounded-xl bg-amber-50 text-gold-dark flex items-center justify-center text-xl"><i class="fa-solid ${c.icon}"></i></span>
+                    <span>
+                        <span class="block font-serif text-lg font-bold text-charcoal leading-snug">${c.name}</span>
+                        <span class="block text-[11px] font-bold uppercase tracking-wide text-gold-dark mt-1">${c.tag}</span>
+                    </span>
+                    <span class="text-sm text-charcoal-muted">${c.desc}</span>
+                </button>`).join('');
+
+            const cat = d.cats.find(c => c.id === state.cat);
+            if (cat) {
+                $('subWrap').classList.remove('hidden');
+                $('subGrid').innerHTML = cat.subs.map(s => `
+                    <button type="button" onclick="selectSub('${s.replace(/'/g, "\\'")}')" class="sub-chip ${state.sub === s ? 'selected' : ''} px-5 py-3 rounded-full text-sm font-bold">${s}</button>`).join('');
+            } else {
+                $('subWrap').classList.add('hidden');
+            }
+
+            if (cat && state.sub) {
+                $('formWrap').classList.remove('hidden');
+                $('summaryLine').textContent = `${d.role} · ${cat.name} · ${state.sub}`;
+                renderExtraFields(cat.id);
+            } else {
+                $('formWrap').classList.add('hidden');
+            }
+            $('formKicker').textContent = state.mode === 'find' ? "Can't find the right match? Share your requirement" : 'Your listing';
+            renderStepper();
+            renderResults();
+        }
+
+        function renderExtraFields(catId) {
+            const isFind = state.mode === 'find';
+            const e1 = $('extraField1'), e2 = $('extraField2');
+            const keep1 = e1.dataset.key === state.mode + catId;
+            if (keep1) return;
+            e1.dataset.key = state.mode + catId;
+            e2.classList.add('hidden'); e2.innerHTML = '';
+
+            if (catId === 'stay') {
+                e1.innerHTML = `<label class="lbl" for="fExtra1">${isFind ? 'Number of Guests' : 'Rooms / Guest Capacity'}</label>
+                    <input id="fExtra1" type="text" placeholder="${isFind ? 'e.g. 4 guests' : 'e.g. 3 rooms, up to 6 guests'}" class="field">`;
+                e2.classList.remove('hidden');
+                e2.innerHTML = isFind
+                    ? `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div><label class="lbl" for="fExtra2">Check-in Date</label><input id="fExtra2" type="date" class="field"></div>
+                        <div><label class="lbl" for="fExtra3">Check-out Date</label><input id="fExtra3" type="date" class="field"></div></div>`
+                    : `<label class="lbl" for="fExtra2">Expected Price per Night (₹)</label><input id="fExtra2" type="text" placeholder="e.g. 2500" class="field">`;
+            } else if (catId === 'rent') {
+                e1.innerHTML = `<label class="lbl" for="fExtra1">${isFind ? 'Monthly Budget (₹)' : 'Expected Monthly Rent (₹)'}</label>
+                    <input id="fExtra1" type="text" placeholder="e.g. 12000" class="field">`;
+            } else if (catId === 'buy') {
+                e1.innerHTML = `<label class="lbl" for="fExtra1">${isFind ? 'Budget (₹)' : 'Expected Price (₹)'}</label>
+                    <input id="fExtra1" type="text" placeholder="e.g. 45 Lakh" class="field">`;
+            } else {
+                e1.innerHTML = `<label class="lbl" for="fExtra1">${isFind ? 'Area Required' : 'Land Area'}</label>
+                    <input id="fExtra1" type="text" placeholder="e.g. 10 Guntha / 2 Acre / 1500 sq.ft" class="field">`;
+                e2.classList.remove('hidden');
+                e2.innerHTML = `<label class="lbl" for="fExtra2">${isFind ? 'Budget (₹)' : 'Expected Price (₹)'}</label><input id="fExtra2" type="text" placeholder="e.g. 60 Lakh" class="field">`;
+            }
+        }
+
+        /* ---------- Interactions ---------- */
+        function setMode(mode) {
+            if (state.mode !== mode) {
+                state.mode = mode; state.cat = null; state.sub = null; state.filters = {};
+                $('extraField1').dataset.key = '';
+                $('leadSuccess').classList.add('hidden');
+            }
+            $('tab-find').classList.toggle('active', mode === 'find');
+            $('tab-sell').classList.toggle('active', mode === 'sell');
+            $('tab-find').setAttribute('aria-selected', mode === 'find');
+            $('tab-sell').setAttribute('aria-selected', mode === 'sell');
+            renderPanel();
+        }
+
+        function selectCat(id) {
+            if (state.cat !== id) { state.cat = id; state.sub = null; state.filters = {}; $('leadSuccess').classList.add('hidden'); }
+            renderPanel();
+            setTimeout(() => $('subWrap').scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
+        }
+
+        function selectSub(s) {
+            state.sub = s;
+            state.filters = {};
+            renderPanel();
+            const target = state.mode === 'find' ? 'resultsWrap' : 'formWrap';
+            setTimeout(() => $(target).scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+        }
+
+        function resetSelection() {
+            state.cat = null; state.sub = null; state.filters = {};
+            $('extraField1').dataset.key = '';
+            renderPanel();
+            $('explore').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleLeadSubmit(e) {
+            e.preventDefault();
+            const d = DATA[state.mode];
+            const cat = d.cats.find(c => c.id === state.cat);
+            const val = id => ($(id) ? $(id).value.trim() : '');
+            const lines = [
+                `*HappiProperties – New ${d.role} Request*`,
+                `Category: ${cat.name}`,
+                `Type: ${state.sub}`,
+                `Name: ${val('fName')}`,
+                `Phone: ${val('fPhone')}`,
+                `${d.locLabel}: ${val('fLocation')}`
+            ];
+            if (state.cat === 'stay' && state.mode === 'find') {
+                if (val('fExtra1')) lines.push(`Guests: ${val('fExtra1')}`);
+                if (val('fExtra2')) lines.push(`Check-in: ${val('fExtra2')}`);
+                if (val('fExtra3')) lines.push(`Check-out: ${val('fExtra3')}`);
+            } else if (state.cat === 'stay') {
+                if (val('fExtra1')) lines.push(`Capacity: ${val('fExtra1')}`);
+                if (val('fExtra2')) lines.push(`Price per night: ₹${val('fExtra2')}`);
+            } else if (state.cat === 'land') {
+                if (val('fExtra1')) lines.push(`Area: ${val('fExtra1')}`);
+                if (val('fExtra2')) lines.push(`${state.mode === 'find' ? 'Budget' : 'Expected price'}: ₹${val('fExtra2')}`);
+            } else if (val('fExtra1')) {
+                lines.push(`${state.mode === 'find' ? 'Budget' : 'Expected price'}: ₹${val('fExtra1')}`);
+            }
+            if (val('fNote')) lines.push(`Note: ${val('fNote')}`);
+
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+            $('leadSuccess').classList.remove('hidden');
+            $('leadForm').reset();
+        }
+
+        /* =====================================================================
+           FIND PROPERTIES: FILTERS + LISTINGS
+        ===================================================================== */
+        const u = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
+        const IMG = {
+            flat:  ['1545324418-cc1a3fa10c00', '1502672260266-1c1ef2d93688', '1560448204-e02f11c3d0e2'],
+            house: ['1600585154340-be6161a56a0c', '1600596542815-ffad4c1539a9', '1564013799919-ab600027ffc6'],
+            bung:  ['1512917774080-9991f1c4c750', '1568605114967-8130f3a36994', '1499793983690-e29da59ef1c2'],
+            room:  ['1522708323590-d24dbb6b0267', '1507089947368-19c1da9775ae', '1519710164239-da123dc03ef4'],
+            shop:  ['1497366216548-37526070297c', '1553877522-43269d4ea984', '1486406146926-c627a92ad1ab'],
+            ind:   ['1565793298595-6a879b1d9492', '1586528116311-ad8dd3c8310d', '1486406146926-c627a92ad1ab'],
+            land:  ['1500382017468-9049fed747ef', '1625246333195-78d9c38ad449', '1500382017468-9049fed747ef']
+        };
+        const MEDIA_ICON = { Photoshoot: 'fa-images', Walkthrough: 'fa-video', 'Virtual Tour': 'fa-vr-cardboard', 'Ad Creative': 'fa-rectangle-ad' };
+        function mk(set, o = {}) {
+            const g = IMG[set].map(u);
+            const m = [{ t: 'Photoshoot', k: 'gallery', src: g }];
+            if (o.wt) m.push({ t: 'Walkthrough', k: 'video', url: typeof o.wt === 'string' ? o.wt : '' });
+            if (o.vt) m.push({ t: 'Virtual Tour', k: 'embed', url: typeof o.vt === 'string' ? o.vt : '' });
+            if (o.ad) m.push({ t: 'Ad Creative', k: 'image', src: [g[0]] });
+            return m;
+        }
+
+        const LISTINGS = [
+            /* ---- BUY HOMES ---- */
+            { id: 'HP-B101', cat: 'buy', sub: 'Flat', badge: 'New', title: '3 BHK Premium Flat – Sai Residency', loc: 'Nashik Road, Nashik', price: '₹58 Lakh',
+              spec: ['3 BHK', '1,050 sq ft', 'East Facing', 'Ready to Move'],
+              attrs: { bhk: '3 BHK', cond: 'New', poss: 'Ready to Move', price: 5.8e6, area: 1050, furn: 'Semi-Furnished', facing: 'East', feat: ['Parking', 'Lift', 'Gated Society'] },
+              media: mk('flat', { wt: 1, vt: 1, ad: 1 }) },
+            { id: 'HP-B102', cat: 'buy', sub: 'Flat', badge: 'Pre-owned', title: '2 BHK Furnished Flat – Gokul Heights', loc: 'Sinnar, Nashik', price: '₹32 Lakh',
+              spec: ['2 BHK', '780 sq ft', 'North Facing', 'Fully Furnished'],
+              attrs: { bhk: '2 BHK', cond: 'Pre-owned', poss: 'Ready to Move', price: 3.2e6, area: 780, furn: 'Fully Furnished', facing: 'North', feat: ['Parking', 'Lift'] },
+              media: mk('flat', { wt: 1, ad: 1 }) },
+            { id: 'HP-B103', cat: 'buy', sub: 'Flat', badge: 'New', title: '2 BHK Flat – Under Construction', loc: 'MIDC Road, Sinnar', price: '₹28 Lakh',
+              spec: ['2 BHK', '720 sq ft', 'West Facing', 'Under Construction'],
+              attrs: { bhk: '2 BHK', cond: 'New', poss: 'Under Construction', price: 2.8e6, area: 720, furn: 'Unfurnished', facing: 'West', feat: ['Parking', 'Lift', 'Garden / Clubhouse'] },
+              media: mk('flat', { vt: 1, ad: 1 }) },
+            { id: 'HP-B201', cat: 'buy', sub: 'Row House', badge: 'New', title: '3 BHK Row House – Shivneri Park', loc: 'Sinnar, Nashik', price: '₹54 Lakh',
+              spec: ['3 BHK', '1,400 sq ft plot', 'East Facing', 'Ready to Move'],
+              attrs: { bhk: '3 BHK', cond: 'New', poss: 'Ready to Move', price: 5.4e6, area: 1400, furn: 'Unfurnished', facing: 'East', feat: ['Parking', 'Garden', 'Gated Society'] },
+              media: mk('house', { wt: 1, vt: 1, ad: 1 }) },
+            { id: 'HP-B202', cat: 'buy', sub: 'Row House', badge: 'Pre-owned', title: '2 BHK Row House – Resale', loc: 'Malegaon Road, Sinnar', price: '₹36 Lakh',
+              spec: ['2 BHK', '900 sq ft plot', 'North Facing', 'Semi-Furnished'],
+              attrs: { bhk: '2 BHK', cond: 'Pre-owned', poss: 'Ready to Move', price: 3.6e6, area: 900, furn: 'Semi-Furnished', facing: 'North', feat: ['Parking', 'Terrace'] },
+              media: mk('house', { wt: 1 }) },
+            { id: 'HP-B301', cat: 'buy', sub: 'Bungalow', badge: 'New', title: '4 BHK Luxury Bungalow – Green Valley', loc: 'Nashik–Pune Highway', price: '₹1.25 Crore',
+              spec: ['4 BHK', '3,200 sq ft plot', 'North Facing', 'Semi-Furnished'],
+              attrs: { bhk: '4 BHK', cond: 'New', poss: 'Ready to Move', price: 1.25e7, area: 3200, furn: 'Semi-Furnished', facing: 'North', feat: ['Parking', 'Garden', 'Terrace', 'Gated Society'] },
+              media: mk('bung', { wt: 1, vt: 1, ad: 1 }) },
+
+            /* ---- RENT / LEASE ---- */
+            { id: 'HP-R101', cat: 'rent', sub: 'Flat', badge: 'For Rent', title: '2 BHK Flat for Rent', loc: 'Sinnar, Nashik', price: '₹9,500 / month',
+              spec: ['2 BHK', 'Semi-Furnished', 'Family Preferred', 'Immediate'],
+              attrs: { bhk: '2 BHK', deal: 'Rent', price: 9500, furn: 'Semi-Furnished', tenant: 'Family', avail: 'Immediately', feat: ['Parking', 'Water 24x7'] },
+              media: mk('flat', { wt: 1, ad: 1 }) },
+            { id: 'HP-R201', cat: 'rent', sub: 'Row House', badge: 'For Lease', title: '3 BHK Row House on Lease', loc: 'Sinnar, Nashik', price: '₹18,000 / month',
+              spec: ['3 BHK', 'Unfurnished', 'Company / Family', 'Within 1 Month'],
+              attrs: { bhk: '3 BHK', deal: 'Lease', price: 18000, furn: 'Unfurnished', tenant: 'Company', avail: 'Within 1 Month', feat: ['Parking', 'Water 24x7'] },
+              media: mk('house', { wt: 1, vt: 1 }) },
+            { id: 'HP-R301', cat: 'rent', sub: 'Bungalow', badge: 'For Rent', title: '4 BHK Bungalow for Rent', loc: 'Nashik Road, Nashik', price: '₹35,000 / month',
+              spec: ['4 BHK', 'Fully Furnished', 'Family Preferred', 'Immediate'],
+              attrs: { bhk: '4 BHK', deal: 'Rent', price: 35000, furn: 'Fully Furnished', tenant: 'Family', avail: 'Immediately', feat: ['Parking', 'Pet Friendly', 'Water 24x7'] },
+              media: mk('bung', { wt: 1, ad: 1 }) },
+            { id: 'HP-R401', cat: 'rent', sub: 'Shop / Commercial', badge: 'For Rent', title: 'Main Road Shop – Sinnar Bazaar', loc: 'Bazaar Peth, Sinnar', price: '₹22,000 / month',
+              spec: ['Shop', '400 sq ft', 'Ground Floor', 'Main Road'],
+              attrs: { ctype: 'Shop', deal: 'Rent', price: 22000, area: 400, floor: 'Ground', feat: ['Main Road', 'Parking'] },
+              media: mk('shop', { wt: 1, ad: 1 }) },
+            { id: 'HP-R501', cat: 'rent', sub: 'Industrial Space', badge: 'For Lease', title: 'Industrial Shed – Sinnar MIDC', loc: 'MIDC, Sinnar', price: '₹55,000 / month',
+              spec: ['Shed', '6,000 sq ft', '25–100 HP Power', 'MIDC'],
+              attrs: { itype: 'Shed', deal: 'Lease', price: 55000, area: 6000, power: '25–100 HP', zone: 'MIDC', feat: ['Truck Access', '3-Phase Power', 'Loading Dock'] },
+              media: mk('ind', { wt: 1, vt: 1, ad: 1 }) },
+
+            /* ---- SHORT STAY ---- */
+            { id: 'HP-S101', cat: 'stay', sub: 'Rooms', badge: 'Short Stay', title: 'Deluxe AC Room', loc: 'Sinnar, Nashik', price: '₹1,800 / night',
+              spec: ['1–2 Guests', 'AC', 'Attached Bath', 'Wi-Fi'],
+              attrs: { stype: ['Per Night', 'Weekly'], guests: '1–2', bath: 'Attached', ac: 'AC', price: 1800, feat: ['Wi-Fi', 'Parking'] },
+              media: mk('room', { wt: 1, ad: 1 }) },
+            { id: 'HP-S201', cat: 'stay', sub: 'Flats', badge: 'Short Stay', title: '2 BHK Fully Furnished Flat Stay', loc: 'Nashik Road, Nashik', price: '₹3,500 / night',
+              spec: ['2 BHK', '3–4 Guests', 'AC', 'Kitchen'],
+              attrs: { stype: ['Per Night', 'Weekly', 'Monthly'], guests: '3–4', bhk: '2 BHK', ac: 'AC', price: 3500, feat: ['Wi-Fi', 'Kitchen', 'Parking'] },
+              media: mk('flat', { wt: 1, vt: 1, ad: 1 }) },
+            { id: 'HP-S301', cat: 'stay', sub: 'Villas', badge: 'Short Stay', title: 'Farm-View Private Villa', loc: 'Sinnar Outskirts', price: '₹8,500 / night',
+              spec: ['4 BHK', '9+ Guests', 'AC', 'Pool'],
+              attrs: { stype: ['Per Night', 'Weekly'], guests: '9+', bhk: '4+ BHK', ac: 'AC', price: 8500, feat: ['Wi-Fi', 'Kitchen', 'Parking', 'Pool', 'Meals Included'] },
+              media: mk('bung', { wt: 1, vt: 1, ad: 1 }) },
+
+            /* ---- LAND & PLOTS ---- */
+            { id: 'HP-L101', cat: 'land', sub: 'NA Plot', badge: 'NA Plot', title: 'NA Plot – Sinnar–Shirdi Road', loc: 'Sinnar–Shirdi Road', price: '₹45 Lakh',
+              spec: ['4,800 sq ft', 'Residential NA', 'NA Order Ready', '30 ft+ Road'],
+              attrs: { price: 4.5e6, area: 4800, use: 'Residential NA', docs: ['NA Order', 'Clear 7/12 Title'], road: '30 ft+', feat: ['Main Road Touch'] },
+              media: mk('land', { wt: 1, ad: 1 }) },
+            { id: 'HP-L102', cat: 'land', sub: 'NA Plot', badge: 'NA Plot', title: 'Commercial NA Plot – Highway Touch', loc: 'Nashik–Pune Highway', price: '₹95 Lakh',
+              spec: ['2,500 sq ft', 'Commercial NA', 'Highway Touch'],
+              attrs: { price: 9.5e6, area: 2500, use: 'Commercial NA', docs: ['NA Order', 'Approved Layout'], road: '30 ft+', feat: ['Main Road Touch', 'Near Highway'] },
+              media: mk('land', { wt: 1, vt: 1, ad: 1 }) },
+            { id: 'HP-L201', cat: 'land', sub: 'Agricultural Land', badge: 'Agri Land', title: '2.5 Acre Farmland with Borewell', loc: 'Sinnar Taluka', price: '₹62 Lakh',
+              spec: ['2.5 Acres', 'Black Soil', 'Grapes', 'Tar Road'],
+              attrs: { price: 6.2e6, area: 2.5, water: ['Borewell', 'Well'], soil: 'Black Soil', crop: 'Grapes', access: 'Tar Road', docs: ['Clear 7/12', 'Electricity', 'Fencing'] },
+              media: mk('land', { wt: 1, vt: 1, ad: 1 }) },
+            { id: 'HP-L301', cat: 'land', sub: 'Industrial Land', badge: 'Industrial', title: 'MIDC Industrial Plot', loc: 'MIDC, Sinnar', price: '₹1.8 Crore',
+              spec: ['25,000 sq ft', 'MIDC', '40–60 ft Road', 'Power & Water'],
+              attrs: { price: 1.8e7, area: 25000, zone: 'MIDC', road: '40–60 ft', feat: ['Power Connection', 'Water Supply', 'Highway Access'] },
+              media: mk('ind', { wt: 1, ad: 1 }) },
+            { id: 'HP-L401', cat: 'land', sub: 'Residential Plot', badge: 'Plot', title: 'Residential Plot – Approved Layout', loc: 'Sinnar, Nashik', price: '₹18 Lakh',
+              spec: ['1,500 sq ft', 'East Facing', 'Corner Plot', 'Approved Layout'],
+              attrs: { price: 1.8e6, area: 1500, appr: 'Approved Layout / TP', facing: 'East', feat: ['Corner Plot', 'Road Touch'] },
+              media: mk('land', { wt: 1, ad: 1 }) }
+        ];
+
+        /* ---------- Filter definitions ---------- */
+        const BUDGETS = {
+            buy:  [['Under ₹30 L', 0, 3e6], ['₹30–60 L', 3e6, 6e6], ['₹60 L–1 Cr', 6e6, 1e7], ['Above ₹1 Cr', 1e7, 1e12]],
+            rent: [['Under ₹8k', 0, 8e3], ['₹8k–15k', 8e3, 15e3], ['₹15k–30k', 15e3, 3e4], ['₹30k–75k', 3e4, 75e3], ['Above ₹75k', 75e3, 1e9]],
+            stay: [['Under ₹1,500', 0, 1500], ['₹1,500–3,000', 1500, 3000], ['₹3,000–6,000', 3000, 6000], ['Above ₹6,000', 6000, 1e8]],
+            land: [['Under ₹10 L', 0, 1e6], ['₹10–50 L', 1e6, 5e6], ['₹50 L–1 Cr', 5e6, 1e7], ['Above ₹1 Cr', 1e7, 1e12]]
+        };
+        const AREA = {
+            flat: [['Under 600 sq ft', 0, 600], ['600–900', 600, 900], ['900–1,200', 900, 1200], ['Above 1,200', 1200, 1e5]],
+            plot: [['Under 1,000 sq ft', 0, 1000], ['1,000–2,000', 1000, 2000], ['2,000–5,000', 2000, 5000], ['Above 5,000', 5000, 1e9]],
+            comm: [['Under 500 sq ft', 0, 500], ['500–1,500', 500, 1500], ['1,500–5,000', 1500, 5000], ['Above 5,000', 5000, 1e9]],
+            indl: [['Under 5,000 sq ft', 0, 5000], ['5,000–20,000', 5000, 2e4], ['20,000–1 Lakh', 2e4, 1e5], ['Above 1 Lakh', 1e5, 1e12]],
+            acre: [['Under 1 acre', 0, 1], ['1–3 acres', 1, 3], ['3–5 acres', 3, 5], ['Above 5 acres', 5, 1e4]]
+        };
+
+        function getFilters(cat, sub) {
+            const chip  = (key, label, options) => ({ key, label, type: 'chip', options });
+            const multi = (key, label, options) => ({ key, label, type: 'multi', options });
+            const range = (key, label, options) => ({ key, label, type: 'range', options });
+            const FURN = ['Unfurnished', 'Semi-Furnished', 'Fully Furnished'];
+            const FACE = ['East', 'North', 'West', 'South'];
+            const flat = sub === 'Flat' || sub === 'Flats';
+
+            if (cat === 'buy') return [
+                chip('bhk', 'BHK', flat ? ['1 RK', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'] : ['2 BHK', '3 BHK', '4 BHK', '5+ BHK']),
+                chip('cond', 'Property Condition', ['New', 'Pre-owned']),
+                chip('poss', 'Possession', ['Ready to Move', 'Under Construction']),
+                range('price', 'Budget', BUDGETS.buy),
+                range('area', flat ? 'Carpet Area' : 'Plot Size', flat ? AREA.flat : AREA.plot),
+                chip('furn', 'Furnishing', FURN),
+                chip('facing', 'Facing', FACE),
+                multi('feat', 'Features', flat ? ['Parking', 'Lift', 'Gated Society', 'Garden / Clubhouse'] : ['Parking', 'Garden', 'Terrace', 'Gated Society'])
+            ];
+
+            if (cat === 'rent') {
+                const deal = chip('deal', 'Rent or Lease', ['Rent', 'Lease']);
+                if (sub === 'Shop / Commercial') return [
+                    chip('ctype', 'Property Type', ['Shop', 'Office', 'Showroom']), deal,
+                    range('price', 'Monthly Rent', BUDGETS.rent), range('area', 'Area', AREA.comm),
+                    chip('floor', 'Floor', ['Ground', 'First', 'Above First']),
+                    multi('feat', 'Features', ['Main Road', 'Parking', 'Power Backup', 'Washroom'])
+                ];
+                if (sub === 'Industrial Space') return [
+                    chip('itype', 'Property Type', ['Shed', 'Warehouse', 'Factory Unit']), deal,
+                    range('price', 'Monthly Rent', BUDGETS.rent), range('area', 'Area', AREA.comm),
+                    chip('zone', 'Zone', ['MIDC', 'Non-MIDC']),
+                    chip('power', 'Power Load', ['Up to 25 HP', '25–100 HP', '100+ HP']),
+                    multi('feat', 'Features', ['Truck Access', '3-Phase Power', 'Loading Dock', 'Water Supply'])
+                ];
+                return [
+                    chip('bhk', 'BHK', flat ? ['1 RK', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'] : ['2 BHK', '3 BHK', '4 BHK', '5+ BHK']), deal,
+                    range('price', 'Monthly Rent', BUDGETS.rent),
+                    chip('furn', 'Furnishing', FURN),
+                    chip('tenant', 'Preferred Tenant', ['Family', 'Bachelors', 'Company']),
+                    chip('avail', 'Available', ['Immediately', 'Within 1 Month']),
+                    multi('feat', 'Features', ['Parking', 'Lift', 'Pet Friendly', 'Water 24x7'])
+                ];
+            }
+
+            if (cat === 'stay') {
+                const f = [multi('stype', 'Stay Duration', ['Per Night', 'Weekly', 'Monthly']), chip('guests', 'Guests', ['1–2', '3–4', '5–8', '9+'])];
+                if (sub === 'Rooms') f.push(chip('bath', 'Bathroom', ['Attached', 'Shared']));
+                else f.push(chip('bhk', 'Bedrooms', ['1 BHK', '2 BHK', '3 BHK', '4+ BHK']));
+                f.push(chip('ac', 'Cooling', ['AC', 'Non-AC']), range('price', 'Budget per Night', BUDGETS.stay),
+                    multi('feat', 'Amenities', ['Wi-Fi', 'Kitchen', 'Parking', 'Pool', 'Meals Included', 'Pet Friendly']));
+                return f;
+            }
+
+            if (sub === 'NA Plot') return [
+                range('price', 'Budget', BUDGETS.land), range('area', 'Plot Size', AREA.plot),
+                chip('use', 'Zone Use', ['Residential NA', 'Commercial NA']),
+                multi('docs', 'Documents', ['NA Order', 'Clear 7/12 Title', 'Approved Layout']),
+                chip('road', 'Road Width', ['Under 20 ft', '20–30 ft', '30 ft+']),
+                multi('feat', 'Features', ['Main Road Touch', 'Near Highway', 'Gated Layout'])
+            ];
+            if (sub === 'Agricultural Land') return [
+                range('price', 'Budget', BUDGETS.land), range('area', 'Land Area', AREA.acre),
+                multi('water', 'Water Source', ['Borewell', 'Well', 'Canal / River', 'Lake / Dam']),
+                chip('soil', 'Soil Type', ['Black Soil', 'Red Soil', 'Mixed']),
+                chip('crop', 'Current Crop', ['Grapes', 'Onion', 'Sugarcane', 'Vegetables', 'Open Land']),
+                chip('access', 'Road Access', ['Tar Road', 'Murum Road', 'Katcha Road']),
+                multi('docs', 'Facilities & Papers', ['Clear 7/12', 'Electricity', 'Fencing', 'Farmhouse / Shed'])
+            ];
+            if (sub === 'Industrial Land') return [
+                chip('zone', 'Zone', ['MIDC', 'Non-MIDC']),
+                range('price', 'Budget', BUDGETS.land), range('area', 'Plot Size', AREA.indl),
+                chip('road', 'Road Width', ['Under 40 ft', '40–60 ft', '60 ft+']),
+                multi('feat', 'Features', ['Power Connection', 'Water Supply', 'Highway Access', 'Corner Plot'])
+            ];
+            return [ /* Residential Plot */
+                range('price', 'Budget', BUDGETS.land), range('area', 'Plot Size', AREA.plot),
+                chip('appr', 'Approval', ['NA Order', 'Gunthewari', 'Approved Layout / TP']),
+                chip('facing', 'Facing', FACE),
+                multi('feat', 'Features', ['Corner Plot', 'Gated Layout', 'Road Touch', 'Drainage & Water'])
+            ];
+        }
+
+        let currentDefs = [];
+
+        function matches(l, defs) {
+            for (const d of defs) {
+                const v = state.filters[d.key];
+                if (v === undefined || (Array.isArray(v) && !v.length)) continue;
+                const a = l.attrs[d.key];
+                if (d.type === 'chip') { if (a !== v) return false; }
+                else if (d.type === 'multi') { const arr = Array.isArray(a) ? a : []; if (!v.every(x => arr.includes(x))) return false; }
+                else if (d.type === 'range') { const o = d.options[v]; if (a === undefined || a < o[1] || a >= o[2]) return false; }
+            }
+            return true;
+        }
+
+        function renderResults() {
+            const wrap = $('resultsWrap');
+            if (state.mode !== 'find' || !state.sub) { wrap.classList.add('hidden'); return; }
+            wrap.classList.remove('hidden');
+            const cat = DATA.find.cats.find(c => c.id === state.cat);
+            $('resTitle').textContent = `${cat.name} — ${state.sub}`;
+            currentDefs = getFilters(state.cat, state.sub);
+
+            $('filterPanel').innerHTML = currentDefs.map(d => {
+                const cur = state.filters[d.key];
+                let btns = '';
+                if (d.type !== 'multi') {
+                    btns += `<button type="button" data-k="${d.key}" data-i="-1" class="fchip ${cur === undefined ? 'on' : ''}">Any</button>`;
+                }
+                btns += d.options.map((o, i) => {
+                    const label = d.type === 'range' ? o[0] : o;
+                    const on = d.type === 'chip' ? cur === o : d.type === 'range' ? cur === i : (cur || []).includes(o);
+                    return `<button type="button" data-k="${d.key}" data-i="${i}" class="fchip ${on ? 'on' : ''}">${label}</button>`;
+                }).join('');
+                const hint = d.type === 'multi' ? '<span class="font-semibold normal-case tracking-normal text-charcoal-muted"> · select any</span>' : '';
+                const wide = d.options.length > 5 ? 'md:col-span-2' : '';
+                return `<div class="${wide}"><p class="lbl">${d.label}${hint}</p><div class="flex flex-wrap gap-2">${btns}</div></div>`;
+            }).join('');
+
+            const list = LISTINGS.filter(l => l.cat === state.cat && l.sub === state.sub && matches(l, currentDefs));
+            $('resCount').textContent = `${list.length} ${list.length === 1 ? 'property' : 'properties'}`;
+            $('listGrid').innerHTML = list.map(listingCard).join('');
+            $('noMatch').classList.toggle('hidden', list.length > 0);
+        }
+
+        $('filterPanel').addEventListener('click', e => {
+            const b = e.target.closest('[data-k]');
+            if (!b) return;
+            const d = currentDefs.find(x => x.key === b.dataset.k);
+            const i = +b.dataset.i;
+            if (d.type === 'multi') {
+                const val = d.options[i], arr = state.filters[d.key] || [];
+                state.filters[d.key] = arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val];
+            } else if (i < 0) {
+                delete state.filters[d.key];
+            } else {
+                state.filters[d.key] = d.type === 'range' ? i : d.options[i];
+            }
+            renderResults();
+        });
+
+        function resetFilters() { state.filters = {}; renderResults(); }
+
+        const FALLBACK_IMG = "this.onerror=null;this.src='https://placehold.co/800x500/1A1A1A/ffffff?text=HappiProperties'";
+
+        function listingCard(l) {
+            const badges = l.media.map(m => `<span class="px-2.5 py-1 rounded-full bg-white/90 text-charcoal text-[11px] font-bold shadow-sm"><i class="fa-solid ${MEDIA_ICON[m.t]} text-gold-dark mr-1"></i>${m.t}</span>`).join('');
+            const spec = l.spec.map(s => `<span class="px-2.5 py-1 rounded-lg bg-amber-50 border border-gold/20 text-xs font-semibold">${s}</span>`).join('');
+            return `
+            <article class="lcard glass-panel rounded-3xl overflow-hidden flex flex-col shadow-lg group">
+                <div class="relative h-56 overflow-hidden bg-stone-900 cursor-pointer" onclick="openProp('${l.id}')">
+                    <img src="${l.media[0].src[0]}" alt="${l.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="${FALLBACK_IMG}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-gold text-white text-[11px] font-bold uppercase tracking-wider shadow">${l.badge}</span>
+                    <div class="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">${badges}</div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col gap-3">
+                    <div>
+                        <h5 class="font-serif text-lg font-bold leading-snug">${l.title}</h5>
+                        <p class="text-xs text-charcoal-muted mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i>${l.loc}</p>
+                    </div>
+                    <p class="font-serif text-2xl font-bold gold-gradient-text">${l.price}</p>
+                    <div class="flex flex-wrap gap-1.5">${spec}</div>
+                    <div class="grid grid-cols-2 gap-2 mt-auto pt-2">
+                        <button type="button" onclick="openProp('${l.id}')" class="py-2.5 rounded-xl bg-white border border-gold/30 font-bold text-sm hover:bg-amber-50 transition-colors"><i class="fa-solid fa-circle-play text-gold mr-1.5"></i>View Media</button>
+                        <button type="button" onclick="openVisit('${l.id}')" class="py-2.5 rounded-xl gold-button-gradient text-white font-bold text-sm"><i class="fa-regular fa-calendar-check mr-1.5"></i>Book Site Visit</button>
+                    </div>
+                </div>
+            </article>`;
+        }
+
+        /* ---------- Property detail modal ---------- */
+        let curProp = null, curMedia = 0, galIdx = 0;
+
+        function toEmbed(url) {
+            let m;
+            if ((m = url.match(/youtu\.be\/([\w-]+)/)) || (m = url.match(/[?&]v=([\w-]+)/)) || (m = url.match(/youtube\.com\/shorts\/([\w-]+)/))) return 'https://www.youtube.com/embed/' + m[1];
+            if (/instagram\.com\/(reel|p)\//.test(url)) return url.split('?')[0].replace(/\/?$/, '/') + 'embed';
+            return url;
+        }
+
+        function openProp(id) {
+            curProp = LISTINGS.find(l => l.id === id);
+            curMedia = 0; galIdx = 0;
+            renderProp();
+            $('propModal').classList.remove('hidden');
+            $('propModal').scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
+        function closeProp() {
+            $('propModal').classList.add('hidden');
+            $('propStage').innerHTML = '';
+            document.body.style.overflow = '';
+        }
+        function setMedia(i) { curMedia = i; galIdx = 0; renderProp(); }
+        function galStep(d) {
+            const n = curProp.media[curMedia].src.length;
+            galIdx = (galIdx + d + n) % n;
+            renderStage();
+        }
+
+        function renderStage() {
+            const m = curProp.media[curMedia];
+            let html = '';
+            if (m.k === 'gallery') {
+                html = `<img src="${m.src[galIdx]}" class="w-full h-full object-cover" onerror="${FALLBACK_IMG}">
+                    <button type="button" onclick="galStep(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-gold hover:text-white flex items-center justify-center shadow" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button type="button" onclick="galStep(1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-gold hover:text-white flex items-center justify-center shadow" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                    <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-black/60 text-white text-xs font-bold">${galIdx + 1} / ${m.src.length}</span>`;
+            } else if (m.k === 'image') {
+                html = `<img src="${m.src[0]}" class="w-full h-full object-contain bg-black" onerror="${FALLBACK_IMG}">`;
+            } else if (m.url) {
+                html = /\.(mp4|webm)(\?|$)/i.test(m.url)
+                    ? `<video src="${m.url}" controls autoplay playsinline class="w-full h-full"></video>`
+                    : `<iframe src="${toEmbed(m.url)}" class="w-full h-full" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen frameborder="0"></iframe>`;
+            } else {
+                html = `<img src="${curProp.media[0].src[0]}" class="w-full h-full object-cover opacity-60" onerror="${FALLBACK_IMG}">
+                    <div class="absolute inset-0 flex items-center justify-center text-center text-white p-6">
+                        <div class="space-y-2">
+                            <div class="w-16 h-16 rounded-full gold-button-gradient mx-auto flex items-center justify-center text-2xl shadow-lg"><i class="fa-solid ${MEDIA_ICON[m.t]}"></i></div>
+                            <p class="font-serif text-lg font-bold">${m.t} coming soon</p>
+                            <p class="text-xs text-gray-200">Call 7770006357 and we will share it on WhatsApp.</p>
+                        </div>
+                    </div>`;
+            }
+            $('propStage').innerHTML = html;
+        }
+
+        function renderProp() {
+            const l = curProp;
+            $('propBadge').textContent = l.badge;
+            $('propTitle').textContent = l.title;
+            $('propTabs').innerHTML = l.media.map((x, i) =>
+                `<button type="button" onclick="setMedia(${i})" class="mtab ${i === curMedia ? 'on' : ''}"><i class="fa-solid ${MEDIA_ICON[x.t]} mr-1.5"></i>${x.t}</button>`).join('');
+            $('propInfo').innerHTML = `
+                <div class="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                        <p class="font-serif text-3xl font-bold gold-gradient-text">${l.price}</p>
+                        <p class="text-sm text-charcoal-muted mt-1"><i class="fa-solid fa-location-dot text-gold mr-1"></i>${l.loc} · Ref ${l.id}</p>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                        <a href="tel:7770006357" class="px-5 py-3 rounded-xl bg-white border border-gold/30 font-bold text-sm hover:bg-amber-50"><i class="fa-solid fa-phone text-gold mr-2"></i>Call</a>
+                        <button type="button" onclick="openVisit('${l.id}')" class="px-6 py-3 rounded-xl gold-button-gradient text-white font-bold text-sm"><i class="fa-regular fa-calendar-check mr-2"></i>Book a Site Visit</button>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">${l.spec.map(s => `<span class="px-3 py-1.5 rounded-lg bg-amber-50 border border-gold/20 text-xs font-semibold">${s}</span>`).join('')}</div>`;
+            renderStage();
+        }
+
+        /* ---------- Site visit booking ---------- */
+        let visitProp = null;
+        function openVisit(id) {
+            visitProp = LISTINGS.find(l => l.id === id);
+            $('visitFor').textContent = visitProp.title;
+            $('visitLoc').textContent = `${visitProp.loc} · Ref ${visitProp.id}`;
+            const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+            $('vDate').min = d.toISOString().slice(0, 10);
+            $('visitModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeVisit() {
+            $('visitModal').classList.add('hidden');
+            document.body.style.overflow = $('propModal').classList.contains('hidden') ? '' : 'hidden';
+        }
+        function submitVisit(e) {
+            e.preventDefault();
+            const l = visitProp;
+            const lines = [
+                '*HappiProperties – Site Visit Request*',
+                `Property: ${l.title} (Ref ${l.id})`,
+                `Location: ${l.loc}`,
+                `Price: ${l.price}`,
+                `Name: ${$('vName').value.trim()}`,
+                `Phone: ${$('vPhone').value.trim()}`,
+                `Preferred Date: ${$('vDate').value}`,
+                `Preferred Time: ${$('vTime').value}`
+            ];
+            if ($('vPeople').value.trim()) lines.push(`Visitors: ${$('vPeople').value.trim()}`);
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+            $('visitForm').reset();
+            closeVisit();
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Escape') return;
+            if (!$('visitModal').classList.contains('hidden')) closeVisit();
+            else if (!$('propModal').classList.contains('hidden')) closeProp();
+        });
+        $('propModal').addEventListener('click', e => { if (e.target === $('propModal')) closeProp(); });
+        $('visitModal').addEventListener('click', e => { if (e.target === $('visitModal')) closeVisit(); });
+
+        /* ---------- Existing helpers ---------- */
+        const menuBtn = $('menuBtn'), mobileMenu = $('mobileMenu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            const msg = `*HappiProperties Inquiry*\nName: ${$('inquiryName').value}\nPhone: ${$('inquiryPhone').value}\nService: ${$('inquiryService').value}\nMessage: ${$('inquiryMessage').value}`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+            $('inquirySuccess').classList.remove('hidden');
+            $('inquiryForm').reset();
+        }
+
+        function openVideoModal(title, img) {
+            $('modalTitle').innerText = title;
+            $('modalImg').src = img;
+            $('videoModal').classList.remove('hidden');
+        }
+        function closeVideoModal() { $('videoModal').classList.add('hidden'); }
+        $('videoModal').addEventListener('click', e => { if (e.target === $('videoModal')) closeVideoModal(); });
+
+        /* ---------- Init ---------- */
+        setMode(location.hash === '#sell' ? 'sell' : 'find');
+    </script>
+</body>
+</html>
