@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Builders &amp; Developers | HappiProperties</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        'cream-dark': '#F4EFEA',
+                        gold: '#D4AF37',
+                        'gold-light': '#F3E5AB',
+                        'gold-dark': '#AA7C11',
+                        charcoal: '#1A1A1A',
+                        'charcoal-muted': '#4A4A4A'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    },
+                    animation: {
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 10s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'rise': 'rise .5s ease both'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(2deg)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' }
+                        },
+                        rise: {
+                            '0%': { opacity: '0', transform: 'translateY(14px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FDFBF7; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        .glass-panel { background: rgba(255,253,249,.92); backdrop-filter: blur(16px); border: 1px solid rgba(212,175,55,.25); }
+        .gold-gradient-text { background: linear-gradient(135deg,#B8860B 0%,#D4AF37 50%,#FFD700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gold-button-gradient { background: linear-gradient(135deg,#D4AF37 0%,#AA7C11 100%); transition: all .3s ease; }
+        .gold-button-gradient:hover { background: linear-gradient(135deg,#E5C158 0%,#C28E15 100%); transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(212,175,55,.4); }
 
+        .field { width: 100%; padding: .8rem 1rem; border-radius: .85rem; border: 1px solid rgba(212,175,55,.35); background: #fff; font-size: .9rem; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+        .field:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 0 3px rgba(212,175,55,.18); }
+        .lbl { display: block; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #4A4A4A; margin-bottom: .45rem; }
+    </style>
+</head>
+<body class="bg-cream text-charcoal font-sans antialiased selection:bg-gold selection:text-white overflow-x-hidden">
+
+    <!-- Ambient background -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-br from-amber-100/60 to-gold/15 blur-3xl animate-float-slow"></div>
+        <div class="absolute top-1/3 -right-32 w-80 h-80 rounded-full bg-gradient-to-bl from-purple-100/40 to-amber-200/50 blur-3xl animate-float-delayed"></div>
+        <div class="absolute -bottom-32 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-stone-200/50 to-amber-100/40 blur-3xl animate-pulse-glow"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#1A1A1A 1px, transparent 1px); background-size: 32px 32px;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-gold/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-orange-400 shadow-md group-hover:scale-105 transition-transform duration-300 bg-white flex items-center justify-center">
+                    <img src="../logo.png" alt="HappiProperties Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/200x200/FF6B35/FFFFFF?text=HP';">
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-charcoal">Happi<span class="gold-gradient-text">Properties</span></span>
+                    <span class="block text-[10px] tracking-widest uppercase text-charcoal-muted font-semibold">New Age Real Estate Platform</span>
+                </div>
+            </a>
+            <nav class="flex items-center gap-3 sm:gap-6 font-medium text-sm">
+                <a href="../" class="text-charcoal hover:text-gold-dark transition-colors font-semibold flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>Back to Properties</span>
+                </a>
+                <a href="#contact" class="px-4 sm:px-5 py-2.5 rounded-full gold-button-gradient text-white font-semibold shadow-sm">
+                    <i class="fa-solid fa-phone sm:mr-2"></i><span class="hidden sm:inline">7770006357</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section class="pt-16 pb-6 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-gold/30 text-gold-dark text-xs sm:text-sm font-semibold tracking-wider uppercase shadow-sm">
+                <i class="fa-solid fa-building text-gold"></i> For Builders &amp; Developers
+            </div>
+            <h1 class="font-serif text-4xl sm:text-6xl font-extrabold text-charcoal tracking-tight leading-[1.12] mt-6">
+                Showcase your project. <span class="gold-gradient-text">Reach real buyers.</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-charcoal-muted max-w-2xl mx-auto leading-relaxed mt-5">
+                Professional photoshoots, cinematic walkthroughs and targeted campaigns for projects in Sinnar &amp; Nashik, backed by our active buyer network.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+                <a href="#packages" class="w-full sm:w-auto px-8 py-4 rounded-full gold-button-gradient text-white font-semibold shadow-lg flex items-center justify-center gap-2"><i class="fa-solid fa-layer-group"></i> View Packages</a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/90 hover:bg-white text-charcoal font-semibold border border-gold/30 shadow-sm flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-gold"></i> Talk to Us</a>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="packages" class="py-24 scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs uppercase font-bold tracking-widest text-gold-dark">Marketing & Promotion Packages</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-charcoal">Choose a Package for Your Project</h2>
+                <p class="text-charcoal-muted text-base sm:text-lg">Supercharge your projects with Photoshoot, Videography, Paid Campaigns and Collaborations.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Package 1 -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between relative group">
+                    <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-amber-100 text-gold-dark text-xs font-bold uppercase tracking-wider border border-gold/20">Visual Core</div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-camera-retro"></i></div>
+                        <h3 class="font-serif text-2xl font-bold mb-2">Photoshoot</h3>
+                        <p class="text-sm text-charcoal-muted mb-6">Capture every room, elevation and amenity with commercial-grade photography.</p>
+                        <ul class="space-y-3 text-sm font-medium mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> HD Interior & Exterior Stills</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Professional Lighting & HDR Retouching</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Aerial / Drone Stills</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Ready-to-publish gallery</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" onclick="selectPackage('Photoshoot Package')" class="w-full py-3 rounded-xl bg-white hover:bg-gold hover:text-white font-bold text-center border border-gold/30 transition-all">Select Package</a>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between relative group">
+                    <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-gold text-white text-xs font-bold uppercase tracking-wider">Most Popular</div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-video"></i></div>
+                        <h3 class="font-serif text-2xl font-bold mb-2">Videography</h3>
+                        <p class="text-sm text-charcoal-muted mb-6">Engage buyers instantly with Instagram Reels and video walkthroughs.</p>
+                        <ul class="space-y-3 text-sm font-medium mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Cinematic 4K Walkthroughs</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Optimized Instagram Reels</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> HappiProperties Page Upload & Reach Boost</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Voiceover & Trend Audio</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" onclick="selectPackage('Videography Package')" class="w-full py-3 rounded-xl gold-button-gradient text-white font-bold text-center">Select Package</a>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between relative group">
+                    <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-amber-100 text-gold-dark text-xs font-bold uppercase tracking-wider border border-gold/20">Lead Gen</div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h3 class="font-serif text-2xl font-bold mb-2">Paid Campaigns</h3>
+                        <p class="text-sm text-charcoal-muted mb-6">Drive high-intent buyer leads with targeted Meta & Google ads.</p>
+                        <ul class="space-y-3 text-sm font-medium mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Meta Ad Setup & Management</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Local Targeting (Sinnar & Region)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> High-Converting Lead Forms</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Weekly Analytics Report</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" onclick="selectPackage('Paid Campaigns Package')" class="w-full py-3 rounded-xl bg-white hover:bg-gold hover:text-white font-bold text-center border border-gold/30 transition-all">Select Package</a>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between relative group">
+                    <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-charcoal text-white text-xs font-bold uppercase tracking-wider">Complete Suite</div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <h3 class="font-serif text-2xl font-bold mb-2">Collaborations</h3>
+                        <p class="text-sm text-charcoal-muted mb-6">Influencer collaborations, branding assets and ongoing social media reach.</p>
+                        <ul class="space-y-3 text-sm font-medium mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Creator & Local Influencer Collabs</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Brand Identity & Creatives</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Dedicated Reel Series</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Priority Consulting Support</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" onclick="selectPackage('Collaborations Package')" class="w-full py-3 rounded-xl bg-white hover:bg-gold hover:text-white font-bold text-center border border-gold/30 transition-all">Select Package</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Builder Enquiry Form -->
+        <section id="contact" class="py-24 bg-cream-dark/60 border-t border-gold/15 scroll-mt-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <div>
+                            <span class="text-xs uppercase font-bold tracking-widest text-gold-dark">Builder Enquiry</span>
+                            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-charcoal mt-2">Let’s Plan Your Project Promotion</h2>
+                            <p class="text-charcoal-muted text-base sm:text-lg mt-4">Tell us about your project and we will suggest the right package.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl flex items-center gap-5 hover:border-gold transition-all">
+                            <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-xl shadow"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider text-charcoal-muted">Direct Phone / WhatsApp</p>
+                                <a href="tel:7770006357" class="font-serif text-2xl font-bold hover:text-gold-dark transition-colors">7770006357</a>
+                            </div>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl flex items-center gap-5 hover:border-gold transition-all">
+                            <div class="w-14 h-14 rounded-2xl gold-button-gradient text-white flex items-center justify-center text-xl shadow"><i class="fa-brands fa-instagram"></i></div>
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider text-charcoal-muted">Official Social Page &amp; Reels</p>
+                                <p class="font-serif text-xl font-bold">@HappiProperties</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-8 sm:p-10 rounded-3xl shadow-xl">
+                        <h3 class="font-serif text-2xl font-bold mb-6">Send a Builder Enquiry</h3>
+                        <form id="inquiryForm" onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div><label class="lbl">Your Name</label><input type="text" id="inquiryName" required placeholder="Full name" class="field"></div>
+                                <div><label class="lbl">Phone Number</label><input type="tel" id="inquiryPhone" required placeholder="Mobile number" class="field"></div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div><label class="lbl">Company / Project Name</label><input type="text" id="inquiryProject" required placeholder="e.g. Sai Residency" class="field"></div>
+                                <div>
+                                    <label class="lbl">Package</label>
+                                    <select id="inquiryService" class="field">
+                                        <option value="Not sure yet">Not sure yet</option>
+                                        <option value="Photoshoot Package">Photoshoot Package</option>
+                                        <option value="Videography Package">Videography Package</option>
+                                        <option value="Paid Campaigns Package">Paid Campaigns Package</option>
+                                        <option value="Collaborations Package">Collaborations Package</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div><label class="lbl">Project Details</label><textarea id="inquiryMessage" rows="4" required placeholder="Location, type of project, number of units, timeline..." class="field resize-none"></textarea></div>
+                            <button type="submit" class="w-full py-4 rounded-xl gold-button-gradient text-white font-bold shadow-md flex items-center justify-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-lg"></i><span>Send Enquiry</span>
+                            </button>
+                        </form>
+                        <div id="inquirySuccess" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium text-center">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i> Enquiry ready! If WhatsApp didn't open, call us at 7770006357.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-white py-12 border-t border-gold/20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-orange-400 bg-white flex items-center justify-center">
+                    <img src="../logo.png" alt="HappiProperties Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/200x200/FF6B35/FFFFFF?text=HP';">
+                </div>
+                <div>
+                    <span class="font-serif text-xl font-bold tracking-tight">Happi<span class="gold-gradient-text">Properties</span></span>
+                    <span class="block text-[10px] tracking-widest uppercase text-gray-400">New Age Real Estate Platform</span>
+                </div>
+            </div>
+            <div class="text-center md:text-right text-sm text-gray-400">
+                <p>&copy; 2026 HappiProperties. All rights reserved.</p>
+                <p class="mt-1">Direct Contact: <a href="tel:7770006357" class="text-gold font-bold hover:underline">7770006357</a> | Sinnar, Nashik, Maharashtra</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const WA_NUMBER = '917770006357';
+        function selectPackage(name) {
+            const el = document.getElementById('inquiryService');
+            for (let i = 0; i < el.options.length; i++) if (el.options[i].value === name) { el.selectedIndex = i; break; }
+        }
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            const v = id => document.getElementById(id).value.trim();
+            const msg = `*HappiProperties – Builder Enquiry*\nName: ${v('inquiryName')}\nPhone: ${v('inquiryPhone')}\nProject: ${v('inquiryProject')}\nPackage: ${v('inquiryService')}\nDetails: ${v('inquiryMessage')}`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+            document.getElementById('inquirySuccess').classList.remove('hidden');
+            document.getElementById('inquiryForm').reset();
+        }
+    </script>
+</body>
+</html>
