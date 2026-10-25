@@ -717,13 +717,16 @@
             ind:   ['1565793298595-6a879b1d9492', '1586528116311-ad8dd3c8310d', '1486406146926-c627a92ad1ab'],
             land:  ['1500382017468-9049fed747ef', '1625246333195-78d9c38ad449', '1500382017468-9049fed747ef']
         };
-        const MEDIA_ICON = { Photoshoot: 'fa-images', Walkthrough: 'fa-video', 'Virtual Tour': 'fa-vr-cardboard', 'Ad Creative': 'fa-rectangle-ad' };
+
+        /* Ad Creative च्या जागी Video आणि आयकॉन fa-film सेट केले आहे */
+        const MEDIA_ICON = { Photoshoot: 'fa-images', Walkthrough: 'fa-video', 'Virtual Tour': 'fa-vr-cardboard', 'Video': 'fa-film' };
+
         function mk(set, o = {}) {
             const g = IMG[set].map(u);
             const m = [{ t: 'Photoshoot', k: 'gallery', src: g }];
             if (o.wt) m.push({ t: 'Walkthrough', k: 'video', url: typeof o.wt === 'string' ? o.wt : '' });
             if (o.vt) m.push({ t: 'Virtual Tour', k: 'embed', url: typeof o.vt === 'string' ? o.vt : '' });
-            if (o.ad) m.push({ t: 'Ad Creative', k: 'image', src: [g[0]] });
+            if (o.ad) m.push({ t: 'Video', k: 'image', src: [g[0]] });
             return m;
         }
 
