@@ -1253,7 +1253,7 @@
         function closeVideoModal() { $('videoModal').classList.add('hidden'); }
         $('videoModal').addEventListener('click', e => { if (e.target === $('videoModal')) closeVideoModal(); });
 
-        /* ---------- Leaflet Map Initialization ---------- */
+        /* ---------- Leaflet Map Initialization with Fix ---------- */
         document.addEventListener("DOMContentLoaded", function () {
             // Center map around Sinnar & Nashik region
             const map = L.map('map').setView([19.8512, 73.9985], 11);
@@ -1278,6 +1278,11 @@
                     `);
                 }
             });
+
+            // FIX: Force Leaflet to recalculate size and load tiles correctly
+            setTimeout(function () {
+                map.invalidateSize();
+            }, 300);
         });
 
         /* ---------- Init ---------- */
