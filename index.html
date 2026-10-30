@@ -226,7 +226,7 @@
 
                     <div class="flex items-center justify-between mt-10 flex-wrap gap-2">
                         <h4 class="font-serif text-xl sm:text-2xl font-bold">Available Properties & Land Assets <span id="resCount" class="text-sm font-sans font-bold text-gold-dark ml-2"></span></h4>
-                        <p class="text-xs text-charcoal-muted"><i class="fa-solid fa-hand-pointer text-gold mr-1"></i>Open a property to watch shoots, walkthroughs & virtual tours</p>
+                        <p class="text-xs text-charcoal-muted"><i class="fa-solid fa-hand-pointer text-gold mr-1"></i>Open a property to watch shoots, walkthroughs, 360 Virtual Tours & reels</p>
                     </div>
                     <div id="listGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5"></div>
 
@@ -808,7 +808,7 @@
         }
 
         /* =====================================================================
-            FIND PROPERTIES: FILTERS + LISTINGS + LAND ASSETS WITH UNIT PRICING
+            FIND PROPERTIES: FILTERS + LISTINGS + LAND ASSETS WITH DUMMY VIRTUAL TOURS
         ===================================================================== */
         const u = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
         const IMG = {
@@ -826,8 +826,9 @@
         function mk(set, o = {}) {
             const g = IMG[set].map(u);
             const m = [{ t: 'Photoshoot', k: 'gallery', src: g }];
-            if (o.wt) m.push({ t: 'Walkthrough', k: 'video', url: typeof o.wt === 'string' ? o.wt : '' });
-            if (o.vt) m.push({ t: 'Virtual Tour', k: 'embed', url: typeof o.vt === 'string' ? o.vt : '' });
+            if (o.wt) m.push({ t: 'Walkthrough', k: 'video', url: typeof o.wt === 'string' ? o.wt : 'https://www.youtube.com/embed/dQw4w9WgXcQ' });
+            // Dummy interactive 360 Virtual Tour link (using Kuula 360 sample embed)
+            if (o.vt !== false) m.push({ t: 'Virtual Tour', k: 'embed', url: typeof o.vt === 'string' ? o.vt : 'https://kuula.co/share/collection/7v0SD?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1' });
             if (o.ad) m.push({ t: 'Video', k: 'image', src: [g[0]] });
             return m;
         }
@@ -841,11 +842,11 @@
             { id: 'HP-B102', cat: 'buy', sub: 'Flat', badge: 'Pre-owned', title: '2 BHK Furnished Flat – Gokul Heights', loc: 'Sinnar, Nashik', price: '₹32 Lakh', unitRate: '₹4,102 / sq.ft', lat: 19.8512, lng: 73.9985,
               spec: ['2 BHK', '780 sq ft', 'North Facing', 'Fully Furnished'],
               attrs: { bhk: '2 BHK', cond: 'Pre-owned', poss: 'Ready to Move', price: 3.2e6, area: 780, furn: 'Fully Furnished', facing: 'North', feat: ['Parking', 'Lift'] },
-              media: mk('flat', { wt: 1, ad: 1 }) },
+              media: mk('flat', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-B103', cat: 'buy', sub: 'Flat', badge: 'Pre-launch', title: '2 BHK Flat – Under Construction', loc: 'MIDC Road, Sinnar', price: '₹28 Lakh', unitRate: '₹3,888 / sq.ft', lat: 19.8350, lng: 74.0120,
               spec: ['2 BHK', '720 sq ft', 'West Facing', 'Under Construction'],
               attrs: { bhk: '2 BHK', cond: 'New', poss: 'Under Construction', price: 2.8e6, area: 720, furn: 'Unfurnished', facing: 'West', feat: ['Parking', 'Lift', 'Garden / Clubhouse'] },
-              media: mk('flat', { vt: 1, ad: 1 }) },
+              media: mk('flat', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-B201', cat: 'buy', sub: 'Row House', badge: 'Available', title: '3 BHK Row House – Shivneri Park', loc: 'Sinnar, Nashik', price: '₹54 Lakh', unitRate: '₹3,857 / sq.ft', lat: 19.8420, lng: 73.9890,
               spec: ['3 BHK', '1,400 sq ft plot', 'East Facing', 'Ready to Move'],
               attrs: { bhk: '3 BHK', cond: 'New', poss: 'Ready to Move', price: 5.4e6, area: 1400, furn: 'Unfurnished', facing: 'East', feat: ['Parking', 'Garden', 'Gated Society'] },
@@ -853,7 +854,7 @@
             { id: 'HP-B202', cat: 'buy', sub: 'Row House', badge: 'Pre-owned', title: '2 BHK Row House – Resale', loc: 'Malegaon Road, Sinnar', price: '₹36 Lakh', unitRate: '₹4,000 / sq.ft', lat: 19.8650, lng: 74.0050,
               spec: ['2 BHK', '900 sq ft plot', 'North Facing', 'Semi-Furnished'],
               attrs: { bhk: '2 BHK', cond: 'Pre-owned', poss: 'Ready to Move', price: 3.6e6, area: 900, furn: 'Semi-Furnished', facing: 'North', feat: ['Parking', 'Terrace'] },
-              media: mk('house', { wt: 1 }) },
+              media: mk('house', { wt: 1, vt: 1 }) },
             { id: 'HP-B301', cat: 'buy', sub: 'Bungalow', badge: 'Available', title: '4 BHK Luxury Bungalow – Green Valley', loc: 'Nashik–Pune Highway', price: '₹1.25 Crore', unitRate: '₹3,906 / sq.ft', lat: 19.8900, lng: 73.9100,
               spec: ['4 BHK', '3,200 sq ft plot', 'North Facing', 'Semi-Furnished'],
               attrs: { bhk: '4 BHK', cond: 'New', poss: 'Ready to Move', price: 1.25e7, area: 3200, furn: 'Semi-Furnished', facing: 'North', feat: ['Parking', 'Garden', 'Terrace', 'Gated Society'] },
@@ -863,7 +864,7 @@
             { id: 'HP-R101', cat: 'rent', sub: 'Flat', badge: 'For Rent', title: '2 BHK Flat for Rent', loc: 'Sinnar, Nashik', price: '₹9,500 / month', unitRate: '₹12 / sq.ft / mo', lat: 19.8500, lng: 73.9950,
               spec: ['2 BHK', 'Semi-Furnished', 'Family Preferred', 'Immediate'],
               attrs: { bhk: '2 BHK', deal: 'Rent', price: 9500, furn: 'Semi-Furnished', tenant: 'Family', avail: 'Immediately', feat: ['Parking', 'Water 24x7'] },
-              media: mk('flat', { wt: 1, ad: 1 }) },
+              media: mk('flat', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-R201', cat: 'rent', sub: 'Row House', badge: 'For Lease', title: '3 BHK Row House on Lease', loc: 'Sinnar, Nashik', price: '₹18,000 / month', unitRate: '₹15 / sq.ft / mo', lat: 19.8450, lng: 73.9920,
               spec: ['3 BHK', 'Unfurnished', 'Company / Family', 'Within 1 Month'],
               attrs: { bhk: '3 BHK', deal: 'Lease', price: 18000, furn: 'Unfurnished', tenant: 'Company', avail: 'Within 1 Month', feat: ['Parking', 'Water 24x7'] },
@@ -871,11 +872,11 @@
             { id: 'HP-R301', cat: 'rent', sub: 'Bungalow', badge: 'For Rent', title: '4 BHK Bungalow for Rent', loc: 'Nashik Road, Nashik', price: '₹35,000 / month', unitRate: '₹18 / sq.ft / mo', lat: 19.9600, lng: 73.8550,
               spec: ['4 BHK', 'Fully Furnished', 'Family Preferred', 'Immediate'],
               attrs: { bhk: '4 BHK', deal: 'Rent', price: 35000, furn: 'Fully Furnished', tenant: 'Family', avail: 'Immediately', feat: ['Parking', 'Pet Friendly', 'Water 24x7'] },
-              media: mk('bung', { wt: 1, ad: 1 }) },
+              media: mk('bung', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-R401', cat: 'rent', sub: 'Shop / Commercial', badge: 'For Rent', title: 'Main Road Shop – Sinnar Bazaar', loc: 'Bazaar Peth, Sinnar', price: '₹22,000 / month', unitRate: '₹55 / sq.ft / mo', lat: 19.8480, lng: 74.0010,
               spec: ['Shop', '400 sq ft', 'Ground Floor', 'Main Road'],
               attrs: { ctype: 'Shop', deal: 'Rent', price: 22000, area: 400, floor: 'Ground', feat: ['Main Road', 'Parking'] },
-              media: mk('shop', { wt: 1, ad: 1 }) },
+              media: mk('shop', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-R501', cat: 'rent', sub: 'Industrial Space', badge: 'For Lease', title: 'Industrial Shed – Sinnar MIDC', loc: 'MIDC, Sinnar', price: '₹55,000 / month', unitRate: '₹9.16 / sq.ft / mo', lat: 19.8200, lng: 74.0300,
               spec: ['Shed', '6,000 sq ft', '25–100 HP Power', 'MIDC'],
               attrs: { itype: 'Shed', deal: 'Lease', price: 55000, area: 6000, power: '25–100 HP', zone: 'MIDC', feat: ['Truck Access', '3-Phase Power', 'Loading Dock'] },
@@ -885,7 +886,7 @@
             { id: 'HP-S101', cat: 'stay', sub: 'Rooms', badge: 'Short Stay', title: 'Deluxe AC Room', loc: 'Sinnar, Nashik', price: '₹1,800 / night', unitRate: 'Per Night Stay', lat: 19.8530, lng: 73.9970,
               spec: ['1–2 Guests', 'AC', 'Attached Bath', 'Wi-Fi'],
               attrs: { stype: ['Per Night', 'Weekly'], guests: '1–2', bath: 'Attached', ac: 'AC', price: 1800, feat: ['Wi-Fi', 'Parking'] },
-              media: mk('room', { wt: 1, ad: 1 }) },
+              media: mk('room', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-S201', cat: 'stay', sub: 'Flats', badge: 'Short Stay', title: '2 BHK Fully Furnished Flat Stay', loc: 'Nashik Road, Nashik', price: '₹3,500 / night', unitRate: 'Per Night Stay', lat: 19.9520, lng: 73.8490,
               spec: ['2 BHK', '3–4 Guests', 'AC', 'Kitchen'],
               attrs: { stype: ['Per Night', 'Weekly', 'Monthly'], guests: '3–4', bhk: '2 BHK', ac: 'AC', price: 3500, feat: ['Wi-Fi', 'Kitchen', 'Parking'] },
@@ -899,7 +900,7 @@
             { id: 'HP-L101', cat: 'land', sub: 'NA Plot', badge: 'NA Plot', title: 'NA Plot – Sinnar–Shirdi Road', loc: 'Sinnar–Shirdi Road', price: '₹45 Lakh', unitRate: '₹937 / sq.ft', lat: 19.8700, lng: 74.0500,
               spec: ['4,800 sq ft', 'Residential NA', 'NA Order Ready', '30 ft+ Road'],
               attrs: { price: 4.5e6, area: 4800, use: 'Residential NA', docs: ['NA Order', 'Clear 7/12 Title'], road: '30 ft+', feat: ['Main Road Touch'] },
-              media: mk('land', { wt: 1, ad: 1 }) },
+              media: mk('land', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-L102', cat: 'land', sub: 'NA Plot', badge: 'Pre-launch', title: 'Commercial NA Plot – Highway Touch', loc: 'Nashik–Pune Highway', price: '₹95 Lakh', unitRate: '₹3,800 / sq.ft', lat: 19.8950, lng: 73.9150,
               spec: ['2,500 sq ft', 'Commercial NA', 'Highway Touch'],
               attrs: { price: 9.5e6, area: 2500, use: 'Commercial NA', docs: ['NA Order', 'Approved Layout'], road: '30 ft+', feat: ['Main Road Touch', 'Near Highway'] },
@@ -911,11 +912,11 @@
             { id: 'HP-L301', cat: 'land', sub: 'Industrial Land', badge: 'Industrial', title: 'MIDC Industrial Plot', loc: 'MIDC, Sinnar', price: '₹1.8 Crore', unitRate: '₹720 / sq.ft', lat: 19.8250, lng: 74.0350,
               spec: ['25,000 sq ft', 'MIDC', '40–60 ft Road', 'Power & Water'],
               attrs: { price: 1.8e7, area: 25000, zone: 'MIDC', road: '40–60 ft', feat: ['Power Connection', 'Water Supply', 'Highway Access'] },
-              media: mk('ind', { wt: 1, ad: 1 }) },
+              media: mk('ind', { wt: 1, vt: 1, ad: 1 }) },
             { id: 'HP-L401', cat: 'land', sub: 'Residential Plot', badge: 'Plot', title: 'Residential Plot – Approved Layout', loc: 'Sinnar, Nashik', price: '₹18 Lakh', unitRate: '₹1,200 / sq.ft', lat: 19.8580, lng: 73.9990,
               spec: ['1,500 sq ft', 'East Facing', 'Corner Plot', 'Approved Layout'],
               attrs: { price: 1.8e6, area: 1500, appr: 'Approved Layout / TP', facing: 'East', feat: ['Corner Plot', 'Road Touch'] },
-              media: mk('land', { wt: 1, ad: 1 }) }
+              media: mk('land', { wt: 1, vt: 1, ad: 1 }) }
         ];
 
         /* ---------- Filter definitions ---------- */
@@ -1102,8 +1103,8 @@
                     </div>
                     <div class="flex flex-wrap gap-1.5">${spec}</div>
                     <div class="grid grid-cols-2 gap-2 mt-auto pt-2">
-                        <button type="button" onclick="openProp('${l.id}')" class="py-2.5 rounded-xl bg-white border border-gold/30 font-bold text-sm hover:bg-amber-50 transition-colors"><i class="fa-solid fa-circle-play text-gold mr-1.5"></i>View Media</button>
-                        <button type="button" onclick="openVisit('${l.id}')" class="py-2.5 rounded-xl gold-button-gradient text-white font-bold text-sm"><i class="fa-regular fa-calendar-check mr-1.5"></i>Book Site Visit</button>
+                        <button type="button" onclick="openProp('${l.id}')" class="py-2.5 rounded-xl bg-white border border-gold/30 font-bold text-sm hover:bg-amber-50 transition-colors"><i class="fa-solid fa-vr-cardboard text-gold mr-1.5"></i>Virtual Tour</button>
+                        <button type="button" onclick="openVisit('${l.id}')" class="py-2.5 rounded-xl gold-button-gradient text-white font-bold text-sm"><i class="fa-regular fa-calendar-check mr-1.5"></i>Book Visit</button>
                     </div>
                 </div>
             </article>`;
@@ -1149,6 +1150,8 @@
                     <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-black/60 text-white text-xs font-bold">${galIdx + 1} / ${m.src.length}</span>`;
             } else if (m.k === 'image') {
                 html = `<img src="${m.src[0]}" class="w-full h-full object-contain bg-black" onerror="${FALLBACK_IMG}">`;
+            } else if (m.url && m.k === 'embed') {
+                html = `<iframe src="${m.url}" class="w-full h-full" allow="autoplay; fullscreen; xr-spatial-tracking; accelerometer; gyroscope" allowfullscreen frameborder="0"></iframe>`;
             } else if (m.url) {
                 html = /\.(mp4|webm)(\?|$)/i.test(m.url)
                     ? `<video src="${m.url}" controls autoplay playsinline class="w-full h-full"></video>`
